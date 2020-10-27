@@ -1,2 +1,5 @@
 node_modules
 text.txt
+dist
+.env
+.vercel

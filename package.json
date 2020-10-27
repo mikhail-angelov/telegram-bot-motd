@@ -1,19 +1,31 @@
 {
   "name": "telegram-bot-motd",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "telegram-bot-motd",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "serverless-bundle",
+    "build": "ncc build api/index.ts -o dist",
+    "build:yandex": "ncc build api/index-yandex.ts -o dist",
+    "start": "node dist/api/index.js",
+    "dev": "tsc-watch --onSuccess \"node ./dist/api/index.js\" --onFailure \"echo Beep! Compilation Failed\""
   },
-  "keywords": ["Telegram", "Bot","Advise"],
+  "keywords": [
+    "Telegram",
+    "Bot",
+    "Advise",
+    "serverless",
+    "lambda"
+  ],
   "author": "Mikhail Angelov",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "node-telegram-bot-api": "^0.23.3",
-    "request": "^2.74.0"
+    "simple-get": "^4.0.0"
+  },
+  "devDependencies": {
+    "@now/node": "^1.8.4",
+    "@vercel/ncc": "^0.24.1",
+    "tsc-watch": "^4.2.9",
+    "typescript": "^4.0.3"
   }
 }
